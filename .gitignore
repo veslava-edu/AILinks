@@ -28,11 +28,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# Database files
-*.sqlite
-*.sqlite3
-bd/
-
 # Email files
 *.eml
 eml/
