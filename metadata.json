@@ -1,0 +1,5 @@
+{
+  "name": "Email Intelligence Extractor",
+  "description": "Analiza ficheros .eml usando Gemini AI para extraer temáticas, etiquetas y contenido, y genera una base de datos SQLite descargable.",
+  "requestFramePermissions": []
+}
