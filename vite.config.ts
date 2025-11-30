@@ -7,7 +7,14 @@ export default defineConfig(({ mode }) => {
     return {
       build: {
         outDir: 'dist',
-        emptyOutDir: true
+        emptyOutDir: true,
+        rollupOptions: {
+          onwarn(warning, warn) {
+            // Suprimir advertencias específicas si es necesario
+            if (warning.code === 'UNUSED_EXTERNAL_IMPORT') return;
+            warn(warning);
+          }
+        }
       },
       server: {
         port: 3000,
@@ -26,8 +33,8 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [react()],
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
+        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
         'process.env.SCRAPER_API_URL': JSON.stringify(env.SCRAPER_API_URL || 'http://localhost:3001')
       },
       resolve: {
